@@ -1,8 +1,8 @@
 plugins {
-    kotlin("js") version "1.7.10"
+    kotlin("js") version "1.7.20"
 }
 
-group = "org.example"
+group = "me.andreaiacono"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -16,12 +16,8 @@ dependencies {
 }
 
 kotlin {
-    js(LEGACY) {
+    js {
         binaries.executable()
-        browser {
-            commonWebpackConfig {
-                cssSupport.enabled = true
-            }
-        }
+        browser {}
     }
 }
