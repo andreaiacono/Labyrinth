@@ -5,7 +5,7 @@ import org.w3c.dom.*
 import utils.Params
 
 private val generator = BinaryGenerator()
-private val params = Params("white", "black", 1.0)
+private val params = Params()
 private val canvasContainer = document.getElementById("canvas_container")!!
 private val canvas = initializeCanvas()
 private val context: CanvasRenderingContext2D
@@ -43,34 +43,50 @@ fun main() {
         draw()
     })
 
-    draw()
+    val rowsRange = document.getElementById("rowsRange") as HTMLInputElement
+    rowsRange.addEventListener("change", {
+        params.rows = rowsRange.value.toInt()
+        draw()
+    })
+
+    val colsRange = document.getElementById("colsRange") as HTMLInputElement
+    colsRange.addEventListener("change", {
+        params.cols = colsRange.value.toInt()
+        draw()
+    })
+
+    window.onresize = {
+        setCanvasSize()
+        draw()
+    }
+
+    window.onload = {
+        setCanvasSize()
+        draw()
+    }
 }
 
 private fun initializeCanvas(): HTMLCanvasElement {
     val canvas = document.createElement("canvas") as HTMLCanvasElement
     canvasContainer.appendChild(canvas)
-    window.onresize = {
-        setCanvasSize()
-        draw()
-    }
     return canvas
 }
 
 private fun setCanvasSize() {
-    context.canvas.width = canvasContainer.clientWidth / 2
-    context.canvas.height = canvasContainer.clientHeight / 2
+    with (context) {
+        canvas.width = canvasContainer.clientWidth - canvasContainer.clientWidth / 15
+        canvas.height = canvasContainer.clientHeight - canvasContainer.clientHeight / 15
+    }
 }
 
 private fun draw() {
-    generator.clearMaze(params, context)
-    generator.drawBorder(params, context)
-    generator.drawMaze(params, context)
+    generator.draw(params, context)
 }
 
 private fun exportAsImage() {
     val img = canvas.toDataURL("image/png")
     val newWindow = window.open("","Exported maze")
     newWindow!!.document.open()
-    newWindow.document.write("<img src=\"$img\"/>")
+    newWindow.document.write("<head><title>Mazer Image></title></head><body><img src=\"$img\"/></body>")
 }
 

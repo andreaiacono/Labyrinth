@@ -4,71 +4,128 @@
     <link rel="shortcut icon" href="img/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <title>Labirinth</title>
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"-->
+<!--          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">-->
+    <title>Mazer</title>
 </head>
 <body>
-<div class="container-float">
-    <div class="row">
-        <div class="col-3">
-            <div id="toolbar">
-                <div class="row">
-                    <div class="col">
-                        <h3>Mazer</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        &nbsp;
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label for="fgcolor">Foreground</label>
-                    </div>
-                    <div class="col">
-                        <input id="fgcolor" name='fgcolor' type="color" value="#000000">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label for="bgcolor">Background</label>
-                    </div>
-                    <div class="col">
-                        <input id="bgcolor" name='bgcolor' type="color" value="#FFFFFF">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label for="lineWidthRange" class="form-label">Line Width</label>
-                    </div>
-                    <div class="col">
-                        <input type="range" class="form-range" min="1" max="20" id="lineWidthRange" value="1">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <button id="new">New</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <button id="export">Export Image</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
+<table border="1" width="100%" height="90%">
+    <tr>
+        <td width="200px">
+            <table id="toolbar">
+                <tr>
+                    <td>Mazer</td>
+                </tr>
+                <tr>
+                    <td><label for="fgcolor">Foreground</label></td>
+                    <td><input id="fgcolor" name='fgcolor' type="color" value="#000000"></td>
+                </tr>
+                <tr>
+                    <td><label for="bgcolor">Background</label></td>
+                    <td><input id="bgcolor" name='bgcolor' type="color" value="#FFFFFF"></td>
+                </tr>
+                <tr>
+                    <td><label for="lineWidthRange" class="form-label">Line Width</label></td>
+                    <td><input type="range" class="form-range" min="1" max="20" id="lineWidthRange" value="1"></td>
+                </tr>
+                <tr>
+                    <td><label for="rowsRange" class="form-label">Rows</label></td>
+                    <td><input type="range" class="form-range" min="3" max="100" id="rowsRange" value="10"></td>
+                </tr>
+                <tr>
+                    <td><label for="colsRange" class="form-label">Cols</label></td>
+                    <td><input type="range" class="form-range" min="3" max="100" id="colsRange" value="10"></td>
+                </tr>
+                <tr>
+                    <td><button id="new">New</button></td>
+                </tr>
+                <tr>
+                    <td><button id="export">Export Image</button></td>
+                </tr>
+            </table>
+        </td>
+        <td>
             <div id="canvas_container"></div>
-        </div>
-    </div>
-</div>
+        </td>
+    </tr>
+
+</table>
+<!--<div class="container-float">-->
+<!--    <div class="row">-->
+<!--        <div class="col-3">-->
+<!--            <div id="toolbar">-->
+<!--                <div class="row">-->
+<!--                    <div class="col">-->
+<!--                        <h3>Mazer</h3>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="col">-->
+<!--                        &nbsp;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="col">-->
+<!--                        <label for="fgcolor">Foreground</label>-->
+<!--                    </div>-->
+<!--                    <div class="col">-->
+<!--                        <input id="fgcolor" name='fgcolor' type="color" value="#000000">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="col">-->
+<!--                        <label for="bgcolor">Background</label>-->
+<!--                    </div>-->
+<!--                    <div class="col">-->
+<!--                        <input id="bgcolor" name='bgcolor' type="color" value="#FFFFFF">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="col">-->
+<!--                        <label for="lineWidthRange" class="form-label">Line Width</label>-->
+<!--                    </div>-->
+<!--                    <div class="col">-->
+<!--                        <input type="range" class="form-range" min="1" max="20" id="lineWidthRange" value="1">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="col">-->
+<!--                        <label for="rowsRange" class="form-label">Rows</label>-->
+<!--                    </div>-->
+<!--                    <div class="col">-->
+<!--                        <input type="range" class="form-range" min="3" max="100" id="rowsRange" value="10">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="col">-->
+<!--                        <label for="colsRange" class="form-label">Cols</label>-->
+<!--                    </div>-->
+<!--                    <div class="col">-->
+<!--                        <input type="range" class="form-range" min="3" max="100" id="colsRange" value="10">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="col">-->
+<!--                        <button id="new">New</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="col">-->
+<!--                        <button id="export">Export Image</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col" style="background-color: green">-->
+<!--            <div id="canvas_container" style="background-color:lightgreen"></div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <script src="Mazer.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"-->
+<!--        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"-->
+<!--        crossorigin="anonymous"></script>-->
 </body>
 </html>
